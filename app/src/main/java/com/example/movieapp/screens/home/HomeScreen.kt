@@ -13,8 +13,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.movieapp.MovieRow
+import com.bawp.movieapp.model.Movie
+import com.bawp.movieapp.model.getMovies
 import com.example.movieapp.navigation.MovieScreens
+import com.example.movieapp.widgets.MovieRow
 
 @Composable
 fun HomeScreen(navController: NavController){
@@ -33,16 +35,7 @@ fun HomeScreen(navController: NavController){
 @Composable
 fun MainContent(
     navController: NavController,
-    movieList:List<String> = listOf(
-    "Avatar",
-    "300",
-    "Harry Porter",
-    "Blade Runner",
-    "Happy Feet",
-    "Vikings",
-    "Interstellar",
-    "Pursuit of Happiness"
-)){
+    movieList:List<Movie> = getMovies()){
 
     Column(modifier = Modifier.padding(5.dp)) {
         LazyColumn(){
