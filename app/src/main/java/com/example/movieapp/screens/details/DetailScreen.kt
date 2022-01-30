@@ -55,16 +55,7 @@ Surface(
                 Spacer(modifier = Modifier.height(8.dp))
                 Divider()
                 Text(text = "Movie Images")
-                LazyRow{
-                    items(newMovieList.first().images){image ->
-                        Card(modifier = Modifier
-                            .padding(12.dp)
-                            .size(240.dp), elevation = 5.dp) {
-                            Image(painter = rememberImagePainter(data = image), contentDescription = "Movie poster")
-
-                        }
-                    }
-                }
+                HorizontalScrollableImageView(newMovieList)
             }
 
         }
@@ -72,4 +63,23 @@ Surface(
 
 
 }
+}
+
+@Composable
+private fun HorizontalScrollableImageView(newMovieList: List<Movie>) {
+    LazyRow {
+        items(newMovieList.first().images) { image ->
+            Card(
+                modifier = Modifier
+                    .padding(12.dp)
+                    .size(240.dp), elevation = 5.dp
+            ) {
+                Image(
+                    painter = rememberImagePainter(data = image),
+                    contentDescription = "Movie poster"
+                )
+
+            }
+        }
+    }
 }
